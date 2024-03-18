@@ -1,10 +1,3 @@
-/*
-
-Today's Topic: Stored Procedures
-
-*/
-
-
 CREATE PROCEDURE Temp_Employee
 AS
 DROP TABLE IF EXISTS #temp_employee
@@ -14,8 +7,7 @@ EmployeesPerJob int ,
 AvgAge int,
 AvgSalary int
 )
-
-
+	
 Insert into #temp_employee
 SELECT JobTitle, Count(JobTitle), Avg(Age), AVG(salary)
 FROM SQLTutorial..EmployeeDemographics emp
@@ -26,9 +18,6 @@ group by JobTitle
 Select * 
 From #temp_employee
 GO;
-
-
-
 
 CREATE PROCEDURE Temp_Employee2 
 @JobTitle nvarchar(100)
@@ -55,5 +44,5 @@ From #temp_employee3
 GO;
 
 
-exec Temp_Employee2 @jobtitle = 'Salesman'
+exec Temp_Employee2 @jobtitle = 'Teacher'
 exec Temp_Employee2 @jobtitle = 'Accountant'
